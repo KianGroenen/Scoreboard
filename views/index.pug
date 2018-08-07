@@ -1,5 +1,36 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div(class="grid-container grid-container__first")
+    div
+      p(class="team team__1") Team 1
+    div
+      p(class="score score__1") 0
+    div
+      p(class="score score__dash") -
+    div
+      p(class="score score__2") 0
+    div
+      p(class="team team__2") Team 2
+  div(class="grid-container grid-container__second")
+    div
+    div
+      p(class="shots shots__1") 0
+    div
+      p(class="shots") TOTAL SHOTS
+    div
+      p(class="shots shots__2") 0
+    div
+    div
+    div
+      p(class="fouls fouls__1") 0
+    div
+      p(class="fouls") FOULS
+    div
+      p(class="fouls fouls__2") 0
+    div
+  div(class="grid-container grid-container__third")
+    div
+      p(class="") REALTIME UPDATES
+    div
+    div

@@ -6,4 +6,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+// ES6 syntax
+router.get('/admin', (req, res, next)=>{
+	res.render('admin');
+});
+
 module.exports = router;

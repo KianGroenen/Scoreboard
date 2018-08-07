@@ -6,3 +6,21 @@ body {
 a {
   color: #00B7FF;
 }
+
+.grid-container {
+	display: grid;
+	text-align: center;
+}
+
+.grid-container__first {
+	grid-template-columns: 35% 10% 10% 10% 35%;
+}
+
+.grid-container__second {
+	grid-template-columns: 30% 10% 20% 10% 30%;
+	grid-template-rows: 50% 50%;
+}
+
+.grid-container__third {
+	grid-template-columns: 30% 40% 30%;
+}
