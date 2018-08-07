@@ -1,3 +1,49 @@
 extends layout
 
 block content
+  div(class="grid-container grid-container__first")
+    div
+      input(type="text" name="team1" class="team team__1" value="Team 1")
+    div
+      a(href="#" class="increase") +
+      a(href="#" class="decrease") -
+      p(class="score score__1") 0
+    div
+      p(class="score score__dash") -
+    div
+      a(href="#" class="increase") +
+      a(href="#" class="decrease") -
+      p(class="score score__2") 0
+    div
+      input(type="text" name="team2" class="team team__2" value="Team 2")
+  div(class="grid-container grid-container__second")
+    div
+    div
+      a(href="#" class="increase") +
+      a(href="#" class="decrease") -
+      p(class="shots shots__1") 0
+    div
+      p(class="shots") TOTAL SHOTS
+    div
+      a(href="#" class="increase") +
+      a(href="#" class="decrease") -
+      p(class="shots shots__2") 0
+    div
+    div
+    div
+      a(href="#" class="increase") +
+      a(href="#" class="decrease") -
+      p(class="fouls fouls__1") 0
+    div
+      p(class="fouls") FOULS
+    div
+      a(href="#" class="increase") +
+      a(href="#" class="decrease") -
+      p(class="fouls fouls__2") 0
+    div
+  div(class="grid-container grid-container__third")
+    div
+      p(class="") REALTIME UPDATES
+    div
+      input(type="text" name="update" class="update" value="update")
+    div
