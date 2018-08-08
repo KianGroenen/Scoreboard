@@ -16,7 +16,7 @@ primus.on('data', function message(data) {
 		var target = temp[1] + "--live";
 		$("." + target).text(score);
 	}
-	console.log(data.team);
+
 	if (data.team) {
 		var className = data.team[0];
 		var value = data.team[1];
@@ -24,11 +24,16 @@ primus.on('data', function message(data) {
 		var target = temp[1] + "--live";
 		$("." + target).text(value);
 	};
+
+	if (data.update) {
+		var value = data.update[0];
+		$('.updateAfter--live').after("<div></div><div><p>" + value + "</p></div><div></div>");
+	};
 });
 
 // send data to server
 
-// sends data with updated scores, fouls & total shots
+// sends data of the scores, fouls & total shots
 $('a').click(function () {
 	var dad = $(this).parent();
 	var target = dad.find("p");
@@ -48,13 +53,22 @@ $('a').click(function () {
 	primus.write({score: list});
 });
 
+// sends data of the teams
 $('.team').keypress(function(e) {
 	if (e.keyCode == 13) {
 		var className = $(this).attr("class");
 		var value = $(this).val();
-		console.log(value);
 		var list = [className, value];
-		console.log(list);
 		primus.write({team: list});
 	};
+});
+
+// sends data of the realtime updates
+$('.update').keypress(function(e) {
+	if (e.keyCode == 13) {
+		var value = $(this).val();
+		var list = [value];
+		$('.updateAfter').after("<div></div><div><p>" + value + "</p></div><div></div>");
+		primus.write({update: list});
+	}
 });
