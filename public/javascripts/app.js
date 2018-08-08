@@ -36,8 +36,8 @@ primus.on('data', function message(data) {
 // sends data of the scores, fouls & total shots
 $('a').click(function () {
 	var dad = $(this).parent();
-	var target = dad.find("p");
-	var number = parseInt(target.text());
+	var target = dad.find("input");
+	var number = parseInt(target.val());
 	if ($(this).hasClass("increase")) {
 		number++;
 	} else if ($(this).hasClass("decrease")) {
@@ -46,7 +46,7 @@ $('a').click(function () {
 		}
 	} else {
 	};
-	target.text(number);
+	target.val(number);
 	var className = target.attr("class");
 	var numberInString = number.toString();
 	var list = [className, numberInString];

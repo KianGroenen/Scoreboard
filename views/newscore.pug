@@ -1,0 +1,51 @@
+extends layout
+
+block content
+  h3= title
+  form#form_add_score(name="addscore", method="post", action="/addscore")
+    span Team1
+    span &nbsp;
+    input#input_name(type="text", placeholder="Team1", name="team1")
+    br
+    br
+    span Team2
+    span &nbsp;
+    input#input_street(type="text", placeholder="Team2", name="team2")
+    br
+    br
+    span Score1
+    span &nbsp;
+    input#input_city(type="text", placeholder="0", name="score1")
+    br
+    br
+    span Score2
+    span &nbsp;
+    input#input_state(type="text", placeholder="0", name="score2")
+    br
+    br
+    span Shots1
+    span &nbsp;
+    input#input_sex(type="text", placeholder="0", name="shots1")
+    br
+    br
+    span Shots2
+    span &nbsp;
+    input#input_gpa(type="text", placeholder="0", name="shots2")
+    br
+    br
+    span Fouls1
+    span &nbsp;
+    input#input_sex(type="text", placeholder="0", name="fouls1")
+    br
+    br
+    span Fouls2
+    span &nbsp;
+    input#input_gpa(type="text", placeholder="0", name="fouls2")
+    br
+    br
+    span Updates
+    span &nbsp;
+    input#input_sex(type="text", placeholder="updates", name="updates")
+    br
+    br
+    button#submit_student(type="submit") submit

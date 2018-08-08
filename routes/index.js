@@ -1,5 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var mongodb = require('mongodb');
+var objectId = require('mongodb').ObjectID;
+var assert = require('assert');
+
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -9,6 +14,115 @@ router.get('/', function(req, res, next) {
 // ES6 syntax
 router.get('/admin', (req, res, next)=>{
 	res.render('admin');
+});
+
+router.get('/thelist', function(req, res) {
+	var MongoClient = mongodb.MongoClient;
+
+	var url = 'mongodb://localhost:27017/scoreApp';
+
+	MongoClient.connect(url, function(err, db) {
+		if (err) {
+			console.log('Unable to connect to the server', err);
+		} else {
+			console.log('Connection Established');
+
+			var collection = db.db().collection('scores');
+
+			collection.find({}).toArray(function(err, result) {
+				if (err) {
+					res.send(err);
+				} else if (result.length) {
+					res.render('scorelist', {
+						'scorelist' : result
+					});
+				} else {
+					res.send('No documents found');
+				}
+
+				db.close();
+			});
+		}
+	});
+});
+
+router.get('/newscore', function(req, res){
+    res.render('newscore', {title: 'Add Score' });
+});
+ 
+router.post('/addscore', function(req, res){
+ 
+    // Get a Mongo client to work with the Mongo server
+    var MongoClient = mongodb.MongoClient;
+ 
+    // Define where the MongoDB server is
+    var url = 'mongodb://localhost:27017/scoreApp';
+ 
+    // Connect to the server
+    MongoClient.connect(url, function(err, db){
+      if (err) {
+        console.log('Unable to connect to the Server:', err);
+      } else {
+        console.log('Connected to Server');
+ 
+        // Get the documents collection
+        var collection = db.db().collection('scores');
+ 
+        // Get the student data passed from the form
+        var match1 = {team1: req.body.team1, team2: req.body.team2,
+          score1: req.body.score1, score2: req.body.score2, shots1: req.body.shots1,
+          shots2: req.body.shots2, fouls1: req.body.fouls1, fouls2: req.body.fouls2, 
+          updates: req.body.updates};
+ 
+        // Insert the student data into the database
+        collection.insert([match1], function (err, result){
+          if (err) {
+            console.log(err);
+          } else {
+ 
+            // Redirect to the updated student list
+            res.redirect("thelist");
+          }
+ 
+          // Close the database
+          db.close();
+        });
+ 
+      }
+    });
+ 
+  });
+
+router.post('/update', function(req, res) {
+	var MongoClient = mongodb.MongoClient;
+
+	var url = 'mongodb://localhost:27017/scoreApp';
+
+	MongoClient.connect(url, function(err, db) {
+		if (err) {
+			console.log('Unable to connect to the server', err);
+		} else {
+			console.log('Connection Established');
+			var collection = db.db().collection('scores');
+			var match1 = {"team1": req.body.team1, "team2": req.body.team2,
+          "score1": req.body.score1, "score2": req.body.score2, "shots1": req.body.shots1,
+          "shots2": req.body.shots2, "fouls1": req.body.fouls1, "fouls2": req.body.fouls2, 
+          "updates": req.body.updates};
+          	console.log(match1);
+
+			collection.updateOne({"_id": objectId("5b6b5300a9de926bb9a59f4a")}, {$set: match1}, function (err, result) {
+				if (err) {
+		            res.render(err);
+		          } else {
+		            res.redirect("admin");
+		            console.log('Item updated');
+		          }
+
+				db.close();
+
+			});
+		}
+	});
 });
 
 module.exports = router;

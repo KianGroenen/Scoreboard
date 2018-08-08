@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h3.
+    Scores
+  ul
+    each score, i in scorelist
+      li#score_list_item
+        a(href="#") #{score.team1} vs #{score.team2}
