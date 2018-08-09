@@ -47,6 +47,7 @@ $('a').click(function () {
 	} else {
 	};
 	target.val(number);
+	$('#form_update').submit();
 	var className = target.attr("class");
 	var numberInString = number.toString();
 	var list = [className, numberInString];

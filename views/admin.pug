@@ -4,43 +4,43 @@ block content
   form#form_update(name="update", method="post", action="/update")
     div(class="grid-container grid-container__first")
       div
-        input#input_team1(type="text" name="team1" class="team team__1" value="Team 1")
+        input#input_team1(type="text" name="team1" class="team team__1" value=admin.team1)
       div
         a(href="#" class="increase") +
         a(href="#" class="decrease") -
-        input#input_score1(type="text" name="score1" class="score score__1" value="0" size="4")
+        input#input_score1(type="text" name="score1" class="score score__1" value=admin.score1 size="4")
       div
         p(class="score score__dash") -
       div
         a(href="#" class="increase") +
         a(href="#" class="decrease") -
-        input#input_score2(type="text" name="score2" class="score score__2" value="0" size="4")
+        input#input_score2(type="text" name="score2" class="score score__2" value=admin.score2 size="4")
       div
-        input#input_team2(type="text" name="team2" class="team team__2" value="Team 2")
+        input#input_team2(type="text" name="team2" class="team team__2" value=admin.team2)
     div(class="grid-container grid-container__second")
       div
       div
         a(href="#" class="increase") +
         a(href="#" class="decrease") -
-        input#input_shots1(type="text" name="shots1" class="shots shots__1" value="0" size="4")
+        input#input_shots1(type="text" name="shots1" class="shots shots__1" value=admin.shots1 size="4")
       div
         p(class="shots") TOTAL SHOTS
       div
         a(href="#" class="increase") +
         a(href="#" class="decrease") -
-        input#input_shots2(type="text" name="shots2" class="shots shots__2" value="0" size="4")
+        input#input_shots2(type="text" name="shots2" class="shots shots__2" value=admin.shots2 size="4")
       div
       div
       div
         a(href="#" class="increase") +
         a(href="#" class="decrease") -
-        input#input_fouls1(type="text" name="fouls1" class="fouls fouls__1" value="0" size="4")
+        input#input_fouls1(type="text" name="fouls1" class="fouls fouls__1" value=admin.fouls1 size="4")
       div
         p(class="fouls") FOULS
       div
         a(href="#" class="increase") +
         a(href="#" class="decrease") -
-        input#input_fouls2(type="text" name="fouls2" class="fouls fouls__2" value="0" size="4")
+        input#input_fouls2(type="text" name="fouls2" class="fouls fouls__2" value=admin.fouls2 size="4")
       div
     div(class="grid-container grid-container__third")
       div

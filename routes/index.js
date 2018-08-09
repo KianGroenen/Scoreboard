@@ -7,16 +7,16 @@ var assert = require('assert');
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+/*router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-
+*/
 // ES6 syntax
-router.get('/admin', (req, res, next)=>{
+/*router.get('/admin', (req, res, next)=>{
 	res.render('admin');
-});
+});*/
 
-router.get('/thelist', function(req, res) {
+router.get('/admin', function(req, res) {
 	var MongoClient = mongodb.MongoClient;
 
 	var url = 'mongodb://localhost:27017/scoreApp';
@@ -29,15 +29,13 @@ router.get('/thelist', function(req, res) {
 
 			var collection = db.db().collection('scores');
 
-			collection.find({}).toArray(function(err, result) {
+			collection.findOne({"_id": objectId("5b6b5300a9de926bb9a59f4a")}, function(err, result) {
 				if (err) {
 					res.send(err);
-				} else if (result.length) {
-					res.render('scorelist', {
-						'scorelist' : result
-					});
 				} else {
-					res.send('No documents found');
+					res.render('admin', {
+						'admin' : result
+					});
 				}
 
 				db.close();
@@ -46,6 +44,35 @@ router.get('/thelist', function(req, res) {
 	});
 });
 
+router.get('/', function(req, res) {
+	var MongoClient = mongodb.MongoClient;
+
+	var url = 'mongodb://localhost:27017/scoreApp';
+
+	MongoClient.connect(url, function(err, db) {
+		if (err) {
+			console.log('Unable to connect to the server', err);
+		} else {
+			console.log('Connection Established');
+
+			var collection = db.db().collection('scores');
+
+			collection.findOne({"_id": objectId("5b6b5300a9de926bb9a59f4a")}, function(err, result) {
+				console.log(result);
+				if (err) {
+					res.send(err);
+				} else {
+					res.render('index', {
+						'data' : result
+					});
+				}
+
+				db.close();
+			});
+		}
+	});
+});
+/*
 router.get('/newscore', function(req, res){
     res.render('newscore', {title: 'Add Score' });
 });
@@ -92,7 +119,7 @@ router.post('/addscore', function(req, res){
     });
  
   });
-
+*/
 router.post('/update', function(req, res) {
 	var MongoClient = mongodb.MongoClient;
 
