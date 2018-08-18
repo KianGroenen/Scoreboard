@@ -1,36 +1,41 @@
 extends layout
 
 block content
-  div(class="grid-container grid-container__first")
+  div(class="grid-container grid-container__first grid-container--border")
+    div(class="line line--big")
+      p(class="team team__1 team__1--live text text--bold text--big text--uppercase") #{data.team1}
+    div(class="line line--big")
+      p(class="score score__1 score__1--live text text--bold text--xtrabig") #{data.score1}
+    div(class="line line--big")
+      p(class="score score__dash text text--bold text--xtrabig") -
+    div(class="line line--big")
+      p(class="score score__2 score__2--live text text--bold text--xtrabig") #{data.score2}
+    div(class="line line--big")
+      p(class="team team__2 team__2--live text text--bold text--big text--uppercase") #{data.team2}
+  div(class="grid-container grid-container__second grid-container--border")
     div
-      p(class="team team__1 team__1--live") #{data.team1}
-    div
-      p(class="score score__1 score__1--live") #{data.score1}
-    div
-      p(class="score score__dash") -
-    div
-      p(class="score score__2 score__2--live") #{data.score2}
-    div
-      p(class="team team__2 team__2--live") #{data.team2}
-  div(class="grid-container grid-container__second")
-    div
-    div
-      p(class="shots shots__1 shots__1--live") #{data.shots1}
-    div
-      p(class="shots") TOTAL SHOTS
-    div
-      p(class="shots shots__2 shots__2--live") #{data.shots2}
+    div(class="line line--big")
+      p(class="shots shots__1 shots__1--live text text--bold text--big text--team1") #{data.shots1}
+    div(class="line line--big")
+      p(class="shots text text--bold text--big text--uppercase") Total Shots
+    div(class="line line--big")
+      p(class="shots shots__2 shots__2--live text text--bold text--big text--team2") #{data.shots2}
     div
     div
     div
-      p(class="fouls fouls__1 fouls__1--live") #{data.fouls1}
+      p(class="fouls fouls__1 fouls__1--live text text--bold text--big text--team1") #{data.fouls1}
     div
-      p(class="fouls") FOULS
+      p(class="fouls text text--bold text--big text--uppercase") Fouls
     div
-      p(class="fouls fouls__2 fouls__2--live") #{data.fouls2}
+      p(class="fouls fouls__2 fouls__2--live text text--bold text--big text--team2") #{data.fouls2}
     div
   div(class="grid-container grid-container__third")
     div
-      p(class="") REALTIME UPDATES
+      p(class="text text--uppercase") Realtime updates
     div
     div(class="updateAfter updateAfter--live")
+    each update in data.updates
+      div
+      div
+        p(class="text") #{update}
+      div

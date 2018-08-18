@@ -29,7 +29,7 @@ router.get('/admin', function(req, res) {
 
 			var collection = db.db().collection('scores');
 
-			collection.findOne({"_id": objectId("5b6b5300a9de926bb9a59f4a")}, function(err, result) {
+			collection.findOne({"_id": objectId("5b7834dca9de926bb9a59f4c")}, function(err, result) {
 				if (err) {
 					res.send(err);
 				} else {
@@ -57,7 +57,7 @@ router.get('/', function(req, res) {
 
 			var collection = db.db().collection('scores');
 
-			collection.findOne({"_id": objectId("5b6b5300a9de926bb9a59f4a")}, function(err, result) {
+			collection.findOne({"_id": objectId("5b7834dca9de926bb9a59f4c")}, function(err, result) {
 				console.log(result);
 				if (err) {
 					res.send(err);
@@ -135,9 +135,36 @@ router.post('/update', function(req, res) {
           "score1": req.body.score1, "score2": req.body.score2, "shots1": req.body.shots1,
           "shots2": req.body.shots2, "fouls1": req.body.fouls1, "fouls2": req.body.fouls2, 
           "updates": req.body.updates};
-          	console.log(match1);
 
-			collection.updateOne({"_id": objectId("5b6b5300a9de926bb9a59f4a")}, {$set: match1}, function (err, result) {
+			collection.updateOne({"_id": objectId("5b7834dca9de926bb9a59f4c")}, {$set: match1}, function (err, result) {
+				console.log(result);
+				if (err) {
+		            res.render(err);
+		          } else {
+		            res.redirect("admin");
+		            console.log('Item updated');
+		          }
+
+				db.close();
+
+			});
+		}
+	});
+});
+
+router.post('/realtimeUpdates', function(req, res) {
+	var MongoClient = mongodb.MongoClient;
+
+	var url = 'mongodb://localhost:27017/scoreApp';
+
+	MongoClient.connect(url, function(err, db) {
+		if (err) {
+			console.log('Unable to connect to the server', err);
+		} else {
+			console.log('Connection Established');
+			var collection = db.db().collection('scores');
+
+          	collection.updateOne({"_id": objectId("5b7834dca9de926bb9a59f4c")}, {$push: {updates: req.body.updates}}, function (err, result) {
 				if (err) {
 		            res.render(err);
 		          } else {

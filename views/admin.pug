@@ -42,10 +42,17 @@ block content
         a(href="#" class="decrease") -
         input#input_fouls2(type="text" name="fouls2" class="fouls fouls__2" value=admin.fouls2 size="4")
       div
+    button#submit_score(type="submit" style="display: none") submit
+  form#form_update(name="realtimeUpdates", method="post", action="/realtimeUpdates")
     div(class="grid-container grid-container__third")
       div
         p(class="") REALTIME UPDATES
       div
         input#input_updates(type="text" name="updates" class="update" value="update")
       div(class="updateAfter")
-    button#submit_score(type="submit") submit
+      each update in admin.updates
+        div
+        div
+          p(class="") #{update}
+        div
+  button#submit_score(type="submit" style="display: none") submit
