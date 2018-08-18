@@ -19,7 +19,7 @@ var assert = require('assert');
 router.get('/admin', function(req, res) {
 	var MongoClient = mongodb.MongoClient;
 
-	var url = 'mongodb://localhost:27017/scoreApp';
+	var url = 'mongodb://kian:abc123@ds125302.mlab.com:25302/scoreapp';
 
 	MongoClient.connect(url, function(err, db) {
 		if (err) {
@@ -47,7 +47,7 @@ router.get('/admin', function(req, res) {
 router.get('/', function(req, res) {
 	var MongoClient = mongodb.MongoClient;
 
-	var url = 'mongodb://localhost:27017/scoreApp';
+	var url = 'mongodb://kian:abc123@ds125302.mlab.com:25302/scoreapp';
 
 	MongoClient.connect(url, function(err, db) {
 		if (err) {
@@ -123,7 +123,7 @@ router.post('/addscore', function(req, res){
 router.post('/update', function(req, res) {
 	var MongoClient = mongodb.MongoClient;
 
-	var url = 'mongodb://localhost:27017/scoreApp';
+	var url = 'mongodb://kian:abc123@ds125302.mlab.com:25302/scoreapp';
 
 	MongoClient.connect(url, function(err, db) {
 		if (err) {
@@ -154,7 +154,7 @@ router.post('/update', function(req, res) {
 router.post('/realtimeUpdates', function(req, res) {
 	var MongoClient = mongodb.MongoClient;
 
-	var url = 'mongodb://localhost:27017/scoreApp';
+	var url = 'mongodb://kian:abc123@ds125302.mlab.com:25302/scoreapp';
 
 	MongoClient.connect(url, function(err, db) {
 		if (err) {
