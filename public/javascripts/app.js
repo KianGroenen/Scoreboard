@@ -69,7 +69,7 @@ $('.update').keypress(function(e) {
 	if (e.keyCode == 13) {
 		var value = $(this).val();
 		var list = [value];
-		$('.updateAfter').after("<div></div><div><p>" + value + "</p></div><div></div>");
+		$('.updateAfter').after("<div></div><div><p class='text'>" + value + "</p></div><div class='updateAfter'></div>");
 		primus.write({update: list});
 	}
 });

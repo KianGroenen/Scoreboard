@@ -29,7 +29,7 @@ router.get('/admin', function(req, res) {
 
 			var collection = db.db().collection('scores');
 
-			collection.findOne({"_id": objectId("5b7834dca9de926bb9a59f4c")}, function(err, result) {
+			collection.findOne({"_id": objectId("5b784c43a9de926bb9a59f4d")}, function(err, result) {
 				if (err) {
 					res.send(err);
 				} else {
@@ -57,7 +57,7 @@ router.get('/', function(req, res) {
 
 			var collection = db.db().collection('scores');
 
-			collection.findOne({"_id": objectId("5b7834dca9de926bb9a59f4c")}, function(err, result) {
+			collection.findOne({"_id": objectId("5b784c43a9de926bb9a59f4d")}, function(err, result) {
 				console.log(result);
 				if (err) {
 					res.send(err);
@@ -133,10 +133,9 @@ router.post('/update', function(req, res) {
 			var collection = db.db().collection('scores');
 			var match1 = {"team1": req.body.team1, "team2": req.body.team2,
           "score1": req.body.score1, "score2": req.body.score2, "shots1": req.body.shots1,
-          "shots2": req.body.shots2, "fouls1": req.body.fouls1, "fouls2": req.body.fouls2, 
-          "updates": req.body.updates};
+          "shots2": req.body.shots2, "fouls1": req.body.fouls1, "fouls2": req.body.fouls2};
 
-			collection.updateOne({"_id": objectId("5b7834dca9de926bb9a59f4c")}, {$set: match1}, function (err, result) {
+			collection.updateOne({"_id": objectId("5b784c43a9de926bb9a59f4d")}, {$set: match1}, function (err, result) {
 				console.log(result);
 				if (err) {
 		            res.render(err);
@@ -164,7 +163,7 @@ router.post('/realtimeUpdates', function(req, res) {
 			console.log('Connection Established');
 			var collection = db.db().collection('scores');
 
-          	collection.updateOne({"_id": objectId("5b7834dca9de926bb9a59f4c")}, {$push: {updates: req.body.updates}}, function (err, result) {
+          	collection.updateOne({"_id": objectId("5b784c43a9de926bb9a59f4d")}, {$push: {updates: req.body.updates}}, function (err, result) {
 				if (err) {
 		            res.render(err);
 		          } else {

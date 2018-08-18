@@ -34,8 +34,9 @@ block content
       p(class="text text--uppercase") Realtime updates
     div
     div(class="updateAfter updateAfter--live")
-    each update in data.updates
-      div
-      div
-        p(class="text") #{update}
-      div
+    if data.updates != null
+      each update in data.updates
+        div
+        div
+          p(class="text") #{update}
+        div
